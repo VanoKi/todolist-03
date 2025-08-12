@@ -19,7 +19,7 @@ function App() {
 
   const [filter, setFilter] = useState<FilterTypes>('All')
 
-  const deleteTask = (taskId: number) => {
+  const deleteTask = (taskId: string) => {
     setTasks(tasks.filter(task => task.id !== taskId))
   }
 
