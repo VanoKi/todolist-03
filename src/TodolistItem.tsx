@@ -2,18 +2,18 @@ import {FilterTypes, Task, Todolist} from "./App.tsx";
 import {Button} from "./components/Button.tsx";
 import {type ChangeEvent, KeyboardEvent, useState} from "react";
 
-type todolistitemProps = {
+type todolistProps = {
   todolist: Todolist
   title: string
   tasks: Task[]
-  deleteTask: (taskId: string) => void
+  deleteTask: (todolistId:string, taskId: string) => void
   changeFilter: (todolistId:string, filter: FilterTypes) => void
-  createTask: (title: string) => void
-  changeTaskStatus: (taskId:string, newStatus:boolean) => void
+  createTask: (todolistId:string, title: string) => void
+  changeTaskStatus: (todolistId:string, taskId:string, newStatus:boolean) => void
   // filter: FilterTypes
 }
 
-export const TodolistItem = (props: todolistitemProps) => {
+export const TodolistItem = (props: todolistProps) => {
   const {todolist: {id, title, filter}, tasks, deleteTask, changeFilter, createTask, changeTaskStatus} = props
   const [taskTitle, setTaskTitle] = useState('')
   const [error, setError] = useState<string | null>(null)

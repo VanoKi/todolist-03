@@ -44,8 +44,8 @@ function App() {
     const newTask = {id: nanoid(5), title, isDone: false}
     setTasks({...tasks, [todolistId]:[newTask, ...tasks[todolistId]]})
   }
-  const changeTaskStatus = (taskId:string, isDone:boolean) => {
-    setTasks(tasks.map( task => task.id === taskId ? {...task, isDone} : task))
+  const changeTaskStatus = (todolistId:string, taskId:string, isDone:boolean) => {
+    setTasks({...tasks, [todolistId]:tasks[todolistId].map(t => t.id === taskId ? {...t, isDone} : t)})
   }
 
   return (
