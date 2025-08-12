@@ -34,8 +34,8 @@ function App() {
     ]
   })
 
-  const deleteTask = (taskId: string) => {
-    setTasks(tasks.filter(task => task.id !== taskId))
+  const deleteTask = (todolistId:string, taskId: string) => {
+    setTasks({...tasks, [todolistId]:tasks[todolistId].filter(t => t.id !== taskId)})
   }
   const changeFilter = (todolistId:string, filter: FilterTypes) => {
     setTodolists(todolists.map(tl => tl.id === todolistId ? {...tl, filter} : tl))
