@@ -1,9 +1,10 @@
 import './App.css'
 import {TodolistItem} from "./TodolistItem.tsx";
 import {useState} from "react";
+import {nanoid} from '@reduxjs/toolkit'
 
 export type Task = {
-  id: number
+  id: string
   title: string
   isDone: boolean
 }
@@ -11,9 +12,9 @@ export type FilterTypes = 'All' | "Completed" | 'Active'
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, title: 'HTML&CSS', isDone: true },
-    { id: 2, title: 'JS', isDone: true },
-    { id: 3, title: 'ReactJS', isDone: false },
+    { id: nanoid(), title: 'HTML&CSS', isDone: true },
+    { id: nanoid(), title: 'JS', isDone: true },
+    { id: nanoid(), title: 'ReactJS', isDone: false },
   ])
 
   const [filter, setFilter] = useState<FilterTypes>('All')
