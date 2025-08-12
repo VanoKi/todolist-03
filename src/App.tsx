@@ -34,9 +34,15 @@ function App() {
   const changeFilter = (filter: FilterTypes) => {
     setFilter(filter)
   }
-
   const createTask = (title:string) => {
     setTasks([{id:nanoid(5), title, isDone: false}, ...tasks])
+  }
+  const changeTaskStatus = (taskId:string, isDone:boolean) => {
+    const task = tasks.find(task => task.id === taskId)
+    if (task) {
+      task.isDone = isDone
+      setTasks([...tasks])
+    }
   }
 
   return (
@@ -47,6 +53,7 @@ function App() {
           deleteTask={deleteTask}
           changeFilter={changeFilter}
           createTask={createTask}
+          changeTaskStatus={changeTaskStatus}
         />
       </div>
   )
