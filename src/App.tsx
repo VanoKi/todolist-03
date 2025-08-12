@@ -12,9 +12,9 @@ export type FilterTypes = 'All' | "Completed" | 'Active'
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: nanoid(), title: 'HTML&CSS', isDone: true },
-    { id: nanoid(), title: 'JS', isDone: true },
-    { id: nanoid(), title: 'ReactJS', isDone: false },
+    { id: nanoid(5), title: 'HTML&CSS', isDone: true },
+    { id: nanoid(5), title: 'JS', isDone: true },
+    { id: nanoid(5), title: 'ReactJS', isDone: false },
   ])
 
   const [filter, setFilter] = useState<FilterTypes>('All')
@@ -35,8 +35,8 @@ function App() {
     setFilter(filter)
   }
 
-  const createTask = () => {
-    alert('creating the task')
+  const createTask = (title:string) => {
+    setTasks([{id:nanoid(5), title, isDone: false}, ...tasks])
   }
 
   return (
