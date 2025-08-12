@@ -8,17 +8,23 @@ export type Task = {
 }
 
 function App() {
-  const tasks1:Task[] = [
+  const tasks:Task[] = [
     { id: 1, title: 'HTML&CSS', isDone: true },
     { id: 2, title: 'JS', isDone: true },
     { id: 3, title: 'ReactJS', isDone: false },
   ]
-  const tasks2:Task[] = []
+
+  const deleteTask = (taskId: number) => {
+    alert(taskId)
+  }
 
   return (
       <div className="app">
-        <TodolistItem title={'What to learn'} tasks={tasks1}/>
-        <TodolistItem title={'What to song'} tasks={tasks2}/>
+        <TodolistItem
+          title={'What to learn'}
+          tasks={tasks}
+          deleteTask={deleteTask}
+        />
       </div>
   )
 }
