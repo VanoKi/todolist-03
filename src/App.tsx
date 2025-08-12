@@ -35,6 +35,9 @@ function App() {
     setFilter(filter)
   }
 
+  const createTask = () => {
+    alert('creating the task')
+  }
 
   return (
       <div className="app">
@@ -43,6 +46,7 @@ function App() {
           tasks={filteredTasks}
           deleteTask={deleteTask}
           changeFilter={changeFilter}
+          createTask={createTask}
         />
       </div>
   )

@@ -6,16 +6,17 @@ type todolistitemProps = {
   tasks: Task[]
   deleteTask: (taskId: string) => void
   changeFilter: (filter: FilterTypes) => void
+  createTask: () => void
 }
 
 export const TodolistItem = (props: todolistitemProps) => {
-  const {title, tasks, deleteTask, changeFilter} = props
+  const {title, tasks, deleteTask, changeFilter, createTask} = props
   return (
     <div>
       <h3>{title}</h3>
       <div>
         <input/>
-        <Button title={'+'} onclick={() => {}}/>
+        <Button title={'+'} onclick={() => createTask}/>
       </div>
         {tasks.length === 0 ? (
           <p>There are not tasks</p>
@@ -24,7 +25,7 @@ export const TodolistItem = (props: todolistitemProps) => {
             {tasks.map((task) => {
               return (
                 <li key={task.id}>
-                  <input type={"checkbox"} checked={task.isDone}/>
+                  <input type={"checkbox"} checked={task.isDone} onChange={() => {}}/>
                   <span>{task.title}</span>
                   <Button title={'x'} onclick={() => deleteTask(task.id)}/>
                 </li>
