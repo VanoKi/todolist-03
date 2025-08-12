@@ -38,11 +38,7 @@ function App() {
     setTasks([{id:nanoid(5), title, isDone: false}, ...tasks])
   }
   const changeTaskStatus = (taskId:string, isDone:boolean) => {
-    const task = tasks.find(task => task.id === taskId)
-    if (task) {
-      task.isDone = isDone
-      setTasks([...tasks])
-    }
+    setTasks(tasks.map( task => task.id === taskId ? {...task, isDone} : task))
   }
 
   return (
