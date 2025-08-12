@@ -14,25 +14,20 @@ export const TodolistItem = (props: todolistitemProps) => {
         <input/>
         <button>+</button>
       </div>
-      <ul>
-        {tasks.map((task) => {
-          return (
-            <li key={task.id}>
-              <input type={"checkbox"} checked={task.isDone}/>
-              <span>{task.title}</span>
-            </li>
-          )
-        })}
-        {/*<li>*/}
-        {/*  <input type="checkbox" checked={true}/> <span>HTML&CSS</span>*/}
-        {/*</li>*/}
-        {/*<li>*/}
-        {/*  <input type="checkbox" checked={true}/> <span>JS</span>*/}
-        {/*</li>*/}
-        {/*<li>*/}
-        {/*  <input type="checkbox" checked={false}/> <span>React</span>*/}
-        {/*</li>*/}
-      </ul>
+        {tasks.length === 0 ? (
+          <p>There are not tasks</p>
+        ) :
+          <ul>
+            {tasks.map((task) => {
+              return (
+                <li key={task.id}>
+                  <input type={"checkbox"} checked={task.isDone}/>
+                  <span>{task.title}</span>
+                </li>
+              )
+            })}
+          </ul>
+        }
       <div>
         <button>All</button>
         <button>Active</button>
