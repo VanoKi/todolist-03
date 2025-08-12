@@ -1,4 +1,5 @@
 import {Task} from "./App.tsx";
+import {Button} from "./components/Button.tsx";
 
 type todolistitemProps = {
   title: string
@@ -24,7 +25,8 @@ export const TodolistItem = (props: todolistitemProps) => {
                 <li key={task.id}>
                   <input type={"checkbox"} checked={task.isDone}/>
                   <span>{task.title}</span>
-                  <button onClick={() => deleteTask(task.id)}>x</button>
+                  {/*<button onClick={() => deleteTask(task.id)}>x</button>*/}
+                  <Button title={'x'} onclick={() => deleteTask(task.id)}/>
                 </li>
               )
             })}
