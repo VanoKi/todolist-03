@@ -22,6 +22,11 @@ function App() {
     { id: nanoid(5), title: 'ReactJS', isDone: false },
   ])
 
+  const [todolists, setTodolists] = useState<Todolist[]>([
+    { id: nanoid(6), title: 'What to learn', filter: 'all' },
+    { id: nanoid(6), title: 'What to buy', filter: 'all' },
+  ])
+
   const [filter, setFilter] = useState<FilterTypes>('All')
 
   const deleteTask = (taskId: string) => {
