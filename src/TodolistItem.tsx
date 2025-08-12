@@ -12,19 +12,27 @@ type todolistitemProps = {
 
 export const TodolistItem = (props: todolistitemProps) => {
   const {title, tasks, deleteTask, changeFilter, createTask} = props
-  const inputRef = useRef<HTMLInputElement>(null)
   const [taskTitle, setTaskTitle] = useState('')
   const createTaskHandler = () => {
     createTask(taskTitle)
     setTaskTitle('')
   }
+
   return (
     <div>
       <h3>{title}</h3>
       <div>
         <input
           value={taskTitle}
-          onChange={event => setTaskTitle(event.currentTarget.value)}/>
+          onChange={event => setTaskTitle(event.currentTarget.value)}
+          onKeyDown={event => {
+            if (event.key === 'Enter') {
+              createTaskHandler()
+          }
+            if (event.key === 'Escape') {
+              setTaskTitle('')
+          }}}
+        />
         <Button title={'+'} onclick={createTaskHandler}/>
       </div>
         {tasks.length === 0 ? (
