@@ -9,6 +9,11 @@ export type Task = {
   isDone: boolean
 }
 export type FilterTypes = 'All' | "Completed" | 'Active'
+export type Todolist = {
+  id: string
+  title: string
+  filter: FilterTypes
+}
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([
