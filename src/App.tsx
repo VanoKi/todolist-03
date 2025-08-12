@@ -16,18 +16,23 @@ export type Todolist = {
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: nanoid(5), title: 'HTML&CSS', isDone: true },
-    { id: nanoid(5), title: 'JS', isDone: true },
-    { id: nanoid(5), title: 'ReactJS', isDone: false },
-  ])
-
+  const todolistId1 = nanoid(6)
+  const todolistId2 = nanoid(6)
   const [todolists, setTodolists] = useState<Todolist[]>([
     { id: nanoid(6), title: 'What to learn', filter: 'All' },
     { id: nanoid(6), title: 'What to buy', filter: 'All' },
   ])
-
-  // const [filter, setFilter] = useState<FilterTypes>('All')
+  const [tasks, setTasks] = useState({
+    [todolistId1]: [
+      {id: nanoid(5), title: 'HTML&CSS', isDone: true},
+      {id: nanoid(5), title: 'JS', isDone: true},
+      {id: nanoid(5), title: 'ReactJS', isDone: false},
+    ],
+    [todolistId2]:[
+      { id: nanoid(5), title: 'Rest API', isDone: true },
+      { id: nanoid(5), title: 'GraphQL', isDone: false },
+    ]
+  })
 
   const deleteTask = (taskId: string) => {
     setTasks(tasks.filter(task => task.id !== taskId))
