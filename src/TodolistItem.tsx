@@ -23,7 +23,7 @@ export const TodolistItem = (props: todolistProps) => {
   const deleteTodolistHandler = () => {
     deleteTodolist(id)
   }
-  const createTaskHandler = () => {
+  const createTaskHandler = (title:string) => {
     createTask(id, title)
   }
 
