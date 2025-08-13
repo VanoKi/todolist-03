@@ -29,7 +29,6 @@ export const CreateItemForm = (props: Props) => {
       setTitle('')
     }}
 
-
   return (
     <div>
       <input
