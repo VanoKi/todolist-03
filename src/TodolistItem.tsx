@@ -2,6 +2,7 @@ import {FilterTypes, Task, Todolist} from "./App.tsx";
 import {Button} from "./components/Button.tsx";
 import {type ChangeEvent} from "react";
 import {CreateItemForm} from "./components/CreateItemForm.tsx";
+import {EditableSpan} from "./components/EditableSpan.tsx";
 
 type todolistProps = {
   todolist: Todolist
@@ -49,7 +50,7 @@ export const TodolistItem = (props: todolistProps) => {
               return (
                 <li key={task.id} className={task.isDone ? 'is-done' : ''}>
                   <input type={"checkbox"} checked={task.isDone} onChange={changeTaskStatusHandler}/>
-                  <span>{task.title}</span>
+                  <EditableSpan value={task.title}/>
                   <Button title={'x'} onclick={deleteTaskHandler}/>
                 </li>
               )
