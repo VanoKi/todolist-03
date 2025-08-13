@@ -10,17 +10,17 @@ type todolistProps = {
   changeFilter: (todolistId:string, filter: FilterTypes) => void
   createTask: (todolistId:string, title: string) => void
   changeTaskStatus: (todolistId:string, taskId:string, newStatus:boolean) => void
-  // filter: FilterTypes
+  deleteTodolist: (todolistId: string) => void
 }
 
 export const TodolistItem = (props: todolistProps) => {
-  const {todolist: {id, title, filter}, tasks, deleteTask, changeFilter, createTask, changeTaskStatus} = props
+  const {todolist: {id, title, filter}, tasks, deleteTask, changeFilter, createTask, changeTaskStatus, deleteTodolist} = props
   const [taskTitle, setTaskTitle] = useState('')
   const [error, setError] = useState<string | null>(null)
   const createTaskHandler = () => {
     const trimmedTitle = taskTitle.trim()
     if (trimmedTitle !== '') {
-      createTask(id, taskTitle)
+      createTask(id, trimmedTitle)
       setTaskTitle('')
     }else{
       setError('Title is required')
@@ -43,7 +43,10 @@ export const TodolistItem = (props: todolistProps) => {
 
   return (
     <div>
-      <h3>{title}</h3>
+      <div className={'container'}>
+        <h3>{title}</h3>
+        <Button title={'x'} onclick={deleteTodolist}/>
+      </div>
       <div>
         <input
           className={error ? 'error' : ''}
