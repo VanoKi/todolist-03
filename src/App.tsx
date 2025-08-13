@@ -56,7 +56,7 @@ function App() {
   }
   const createTodolist = (title:string) => {
     const todolistId = nanoid(6)
-    const newTodolist = { id: todolistId, title, filter: 'All' }
+    const newTodolist:Todolist = { id: todolistId, title, filter: 'All' }
     setTodolists([newTodolist, ...todolists])
     setTasks({...tasks, [todolistId]:[]})
   }
