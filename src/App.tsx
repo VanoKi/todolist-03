@@ -19,8 +19,8 @@ function App() {
   const todolistId1 = nanoid(6)
   const todolistId2 = nanoid(6)
   const [todolists, setTodolists] = useState<Todolist[]>([
-    { id: nanoid(6), title: 'What to learn', filter: 'All' },
-    { id: nanoid(6), title: 'What to buy', filter: 'All' },
+    { id: todolistId1, title: 'What to learn', filter: 'All' },
+    { id: todolistId2, title: 'What to buy', filter: 'All' },
   ])
   const [tasks, setTasks] = useState({
     [todolistId1]: [

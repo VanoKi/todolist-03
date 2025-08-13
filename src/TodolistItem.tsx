@@ -20,7 +20,7 @@ export const TodolistItem = (props: todolistProps) => {
   const createTaskHandler = () => {
     const trimmedTitle = taskTitle.trim()
     if (trimmedTitle !== '') {
-      createTask(taskTitle)
+      createTask(id, taskTitle)
       setTaskTitle('')
     }else{
       setError('Title is required')
@@ -60,11 +60,11 @@ export const TodolistItem = (props: todolistProps) => {
           <ul>
             {tasks.map((task) => {
               const deleteTaskHandler = () => {
-                deleteTask(task.id)
+                deleteTask(id, task.id)
               }
               const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
                 const newStatusValue = e.currentTarget.checked
-                changeTaskStatus(task.id, newStatusValue)
+                changeTaskStatus(id, task.id, newStatusValue)
               }
               return (
                 <li key={task.id} className={task.isDone ? 'is-done' : ''}>
