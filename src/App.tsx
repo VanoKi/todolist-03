@@ -2,6 +2,7 @@ import './App.css'
 import {TodolistItem} from "./TodolistItem.tsx";
 import {useState} from "react";
 import {nanoid} from '@reduxjs/toolkit'
+import {CreateItemForm} from "./components/CreateItemForm.tsx";
 
 export type Task = {
   id: string
@@ -48,15 +49,21 @@ function App() {
   const changeTaskStatus = (todolistId:string, taskId:string, isDone:boolean) => {
     setTasks({...tasks, [todolistId]:tasks[todolistId].map(t => t.id === taskId ? {...t, isDone} : t)})
   }
-
   const deleteTodolist = (todolistId: string) => {
     setTodolists(todolists.filter(tl => tl.id !== todolistId))
     delete tasks[todolistId]
     setTasks({...tasks})
   }
+  const createTodolist = (title:string) => {
+    const todolistId = nanoid(6)
+    const newTodolist = { id: todolistId, title, filter: 'All' }
+    setTodolists([newTodolist, ...todolists])
+    setTasks({...tasks, [todolistId]:[]})
+  }
 
   return (
       <div className="app">
+        <CreateItemForm onCreateItem={createTodolist}/>
         {todolists.map(todolist => {
           const todolistTasks = tasks[todolist.id]
           let filteredTasks = todolistTasks
