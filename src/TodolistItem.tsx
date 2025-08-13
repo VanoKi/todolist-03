@@ -40,12 +40,15 @@ export const TodolistItem = (props: todolistProps) => {
   const changeFilterHandler = (filter:FilterTypes) => {
     changeFilter(id, filter)
   }
+  const deleteTodolistHandler = () => {
+    deleteTodolist(id)
+  }
 
   return (
     <div>
       <div className={'container'}>
         <h3>{title}</h3>
-        <Button title={'x'} onclick={deleteTodolist}/>
+        <Button title={'x'} onclick={deleteTodolistHandler}/>
       </div>
       <div>
         <input
