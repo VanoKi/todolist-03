@@ -17,10 +17,22 @@ export const EditableSpan = ({value, onChange}: Props) => {
   const changeTitle = (event:ChangeEvent<HTMLInputElement>) => {
     setTitle(event.currentTarget.value)
   }
+  const keyDownHandler = (e:KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      turnOffEditMode()
+    }
+    if (e.key === 'Escape') {
+      setIsEdit(false)
+    }
+  }
   return (
     <>
       {isEdit ? (
-        <input value={title} autoFocus onBlur={turnOffEditMode} onChange={changeTitle}/>
+        <input value={title}
+               autoFocus onBlur={turnOffEditMode}
+               onChange={changeTitle}
+               onKeyDown={keyDownHandler}
+        />
       ) : (
         <span onDoubleClick={turnOnEditMode}>{value}</span>
       )}
