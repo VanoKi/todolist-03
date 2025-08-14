@@ -14,10 +14,11 @@ type todolistProps = {
   changeTaskStatus: (todolistId:string, taskId:string, newStatus:boolean) => void
   deleteTodolist: (todolistId: string) => void
   changeTaskTitle: (todolistId:string, taskId:string, title:string) => void
+  changeTodolistTitle: (todolistId:string, title:string) => void
 }
 
 export const TodolistItem = (props: todolistProps) => {
-  const {todolist: {id, title, filter}, tasks, deleteTask, changeFilter, createTask, changeTaskStatus, deleteTodolist, changeTaskTitle} = props
+  const {todolist: {id, title, filter}, tasks, deleteTask, changeFilter, createTask, changeTaskStatus, deleteTodolist, changeTaskTitle, changeTodolistTitle} = props
 
   const changeFilterHandler = (filter:FilterTypes) => {
     changeFilter(id, filter)
@@ -28,11 +29,14 @@ export const TodolistItem = (props: todolistProps) => {
   const createTaskHandler = (title:string) => {
     createTask(id, title)
   }
+  const changeTodolistTitleHandler = (title:string) => {
+    changeTodolistTitle(id, title)
+  }
 
   return (
     <div>
       <div className={'container'}>
-        <h3>{title}</h3>
+        <h3><EditableSpan value={title} onChange={changeTodolistTitleHandler}/></h3>
         <Button title={'x'} onclick={deleteTodolistHandler}/>
       </div>
       <CreateItemForm onCreateItem={createTaskHandler}/>

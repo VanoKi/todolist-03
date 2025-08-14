@@ -1,4 +1,4 @@
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useState, KeyboardEvent} from "react";
 
 type Props = {
   value: string
@@ -7,6 +7,7 @@ type Props = {
 export const EditableSpan = ({value, onChange}: Props) => {
   const [title, setTitle] = useState(value)
   const [isEdit, setIsEdit] = useState(false)
+
   const turnOnEditMode = () => {
     setIsEdit(true)
   }
